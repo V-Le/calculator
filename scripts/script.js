@@ -33,3 +33,7 @@ function minusOf(x, y) {
 function divideOf(x, y) {
     return y == 0 ? "Cannot divide by zero" : x/y;
 }
+
+function multiOf(x, y) {
+    return x * y;
+}
