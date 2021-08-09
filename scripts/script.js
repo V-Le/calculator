@@ -24,45 +24,57 @@ const buttonEqual = buttonsContainer.querySelector('#button-equal');
 
 function sumOf(x, y) {
     return x + y;
-}
+};
 
 function minusOf(x, y) {
     return x - y;
-}
+};
 
 function divideOf(x, y) {
     return y == 0 ? "Cannot divide by zero" : x/y;
-}
+};
 
 function multiOf(x, y) {
     return x * y;
-}
+};
 
-aTempNum = '';
-bTempNum = '';
+function calcEquals(calcString) {
+    return new Function('return ' + calcString)();
+};
+
+displayNum = '';
+calcString = '';
 
 
 button1.addEventListener('click', function() {
-    aTempNum += '1';
-    displayArea.innerText = aTempNum;
+    displayNum += '1';
+    calcString += '1';
+    displayArea.innerText = displayNum;
     
 });
 
 button2.addEventListener('click', function() {
-    aTempNum += 2;
-    displayArea.innerText = aTempNum;
+    displayNum += '2';
+    calcString += '2';
+    displayArea.innerText = displayNum;
 });
 
 buttonPlus.addEventListener('click', function() {
-    aTempNum += '+';
+    displayNum = '';
+    calcString += '+';
     displayArea.innerText = '+';
 });
 
 buttonEqual.addEventListener('click', function() {
-    
-    displayArea.innerText = evil(aTempNum);
-})
+    displayNum = '';
+    displayArea.innerText = calcEquals(calcString);
+    calcString =  '';
+});
 
-function evil(aTempNum) {
-    return new Function('return ' + aTempNum)();
-  }
+
+
+buttonClear.addEventListener('click', function() {
+    displayNum = '';
+    calcString = '';
+    displayArea.innerText = '0';
+});
