@@ -37,3 +37,32 @@ function divideOf(x, y) {
 function multiOf(x, y) {
     return x * y;
 }
+
+aTempNum = '';
+bTempNum = '';
+
+
+button1.addEventListener('click', function() {
+    aTempNum += '1';
+    displayArea.innerText = aTempNum;
+    
+});
+
+button2.addEventListener('click', function() {
+    aTempNum += 2;
+    displayArea.innerText = aTempNum;
+});
+
+buttonPlus.addEventListener('click', function() {
+    aTempNum += '+';
+    displayArea.innerText = '+';
+});
+
+buttonEqual.addEventListener('click', function() {
+    
+    displayArea.innerText = evil(aTempNum);
+})
+
+function evil(aTempNum) {
+    return new Function('return ' + aTempNum)();
+  }
