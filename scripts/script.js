@@ -1,3 +1,4 @@
+//https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator
 const displayArea = document.querySelector('#display-area');
 const buttonsContainer = document.querySelector('.buttons-container');
 const buttonClear = buttonsContainer.querySelector('#button-clear');
@@ -42,8 +43,9 @@ function calcEquals(calcString) {
     return calcString == '' ? 0 : new Function('return ' + calcString)();
 };
 
-displayNum = '';
-calcString = '';
+var displayNum = '';
+var calcString = '';
+var tempCalcNum = '';
 
 
 button1.addEventListener('click', function() {
@@ -60,14 +62,27 @@ button2.addEventListener('click', function() {
 });
 
 buttonPlus.addEventListener('click', function() {
+    if(calcString == '' || isNaN(calcString[calcString.length -1])) {
+        return;
+    }
+
+    if (tempCalcNum = calcEquals(calcString)){
+        calcString = tempCalcNum;
+    }
     displayNum = '';
     calcString += '+';
     displayArea.innerText = '+';
-});
+    }
+);
 
 buttonEqual.addEventListener('click', function() {
+    if(displayNum == calcEquals(calcString)) {
+        return;
+    }
     displayNum = '';
     displayArea.innerText = calcEquals(calcString);
+    
+    tempCalcNum = calcEquals(calcString);
     calcString =  '';
 });
 
