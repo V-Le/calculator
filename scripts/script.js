@@ -39,7 +39,7 @@ function multiOf(x, y) {
 };
 
 function calcEquals(calcString) {
-    return new Function('return ' + calcString)();
+    return calcString == '' ? 0 : new Function('return ' + calcString)();
 };
 
 displayNum = '';
