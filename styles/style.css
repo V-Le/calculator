@@ -24,9 +24,33 @@ body {
 
 #display-area {
     width: 100%;
-    height: 110px;
-    padding: 10px 30px;
+    height: 100px;
+    padding: 0px 0px;
     border: rgb(255, 255, 255) 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+
+    color: white;
+}
+
+#calc-area {
+    width: 100%;
+    height: 10px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+}
+
+#inputted-area {
+    width: 100%;
+    height: 10px;
+    padding: 20px 30px;
+
     display: flex;
     justify-content: flex-end;
     align-items: center;
