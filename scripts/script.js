@@ -28,7 +28,7 @@ function calcEquals(calcString) {
 var tempOne = '';
 var tempTwo = '';
 var tempOperator = '';
-let finalAnswer = '';
+let finalAnswer = ' ';
 
 buttons.map(function(button) {
     button.addEventListener('click', (e) => {
@@ -40,26 +40,84 @@ buttons.map(function(button) {
                 tempTwo = '';
                 break;
 
+            case ".":
+                if (inputArea.textContent.includes('.')) {
+                    return;
+                } else {
+                    inputArea.innerText += e.target.innerText;
+                    break;
+                }
+                
+
             case "+":
                 if (inputArea.innerText == finalAnswer) {
-                    calcArea.innerText = finalAnswer + ' + ';
+                    calcArea.innerText = `${finalAnswer} + `;
                     inputArea.innerText = '';
                     break;
                 } else {
-                    calcArea.innerText += inputArea.innerText + ' + ';
+                    calcArea.innerText += ` ${inputArea.innerText} + `;
+                    inputArea.innerText = '';
+                    break;
+                }
+
+            case "-":
+            if (inputArea.innerText == finalAnswer) {
+                calcArea.innerText = `${finalAnswer} - `;
+                inputArea.innerText = '';
+                break;
+            } else {
+                calcArea.innerText += ` ${inputArea.innerText} - `;
+                inputArea.innerText = '';
+                break;
+            }
+
+            case "*":
+                if (inputArea.innerText == finalAnswer) {
+                    calcArea.innerText = `${finalAnswer} * `;
+                    inputArea.innerText = '';
+                    break;
+                } else {
+                    calcArea.innerText += ` ${inputArea.innerText} * `;
+                    inputArea.innerText = '';
+                    break;
+                }   
+
+            case "/":
+                if (inputArea.innerText == finalAnswer) {
+                    calcArea.innerText = `${finalAnswer} / `;
+                    inputArea.innerText = '';
+                    break;
+                } else {
+                    calcArea.innerText += ` ${inputArea.innerText} / `;
                     inputArea.innerText = '';
                     break;
                 }
 
             case "=":
                 tempTwo = calcArea.innerText + inputArea.innerText;
-                calcArea.innerText += ' ' + inputArea.innerText;
-                finalAnswer = calcEquals(tempTwo)
-                inputArea.innerText = finalAnswer;
+                calcArea.innerText += ` ${inputArea.innerText} `;
+                finalAnswer = calcEquals(tempTwo);
+                if (finalAnswer == Infinity) {
+                    alert('Can\'t divide by 0');
+                inputArea.innerText = '';
+                calcArea.innerText = '';
                 break;
+                } else {
+                    inputArea.innerText = finalAnswer;
+                    break;
+                }
+                
 
             default:
+                if (inputArea.innerText == finalAnswer) {
+                    calcArea.innerText = '';
+                    inputArea.innerText = '';
+                    inputArea.innerText += e.target.innerText;
+                    break;
+                } else {
                 inputArea.innerText += e.target.innerText;
+                
+                }
         }
 
 
